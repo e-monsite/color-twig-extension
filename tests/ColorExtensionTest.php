@@ -29,7 +29,7 @@ class ColorExtensionTest extends TestCase
     {
         return [
             ['rgb(138, 7, 7)', 20, 'rgba(110, 5, 5, 1)'],
-            ['rgb(138, 7, 7, 0.8)', 20, 'rgba(110, 5, 5, 0.8)'],
+            ['rgba(138, 7, 7, 0.8)', 20, 'rgba(110, 5, 5, 0.8)'],
             ['#8a0707', 20, 'rgba(110, 5, 5, 1)'],
         ];
     }
