@@ -1,0 +1,30 @@
+{
+    "name": "e-monsite/color-twig-extension",
+    "description": "Manipulate colors with twig",
+    "type": "library",
+    "keywords": [
+        "e-monsite",
+        "emonsite",
+        "color",
+        "twig"
+    ],
+    "require": {
+        "php": "^7.3",
+        "mikealmond/color": "^0.1.3",
+        "twig/twig": "^2.12"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Emonsite\\ColorTwigExtension\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Emonsite\\ColorTwigExtension\\Tests\\": "tests"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.4"
+    }
+}
