@@ -24,7 +24,7 @@ class ColorExtension extends AbstractExtension
         ];
     }
 
-    public function darken(?string $colorAsString, int $percent): string
+    public function darken(string $colorAsString, int $percent): string
     {
         try {
             /** @var Color $color */
@@ -36,7 +36,7 @@ class ColorExtension extends AbstractExtension
         return CssGenerator::rgba($color->darken($percent), $alpha);
     }
 
-    public function lighten(?string $colorAsString, int $percent): string
+    public function lighten(string $colorAsString, int $percent): string
     {
         try {
             /** @var Color $color */
@@ -51,7 +51,7 @@ class ColorExtension extends AbstractExtension
     /**
      * Set the alpha (transparence) of a color
      */
-    public function alpha(?string $colorAsString, float $newAlpha): string
+    public function alpha(string $colorAsString, float $newAlpha): string
     {
         try {
             /** @var Color $color */
