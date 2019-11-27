@@ -9,6 +9,7 @@ use MikeAlmond\Color\CssGenerator;
 use MikeAlmond\Color\Exceptions\InvalidColorException;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
+use Twig\TwigTest;
 
 /**
  * Some filter to manipulate colors in twig
@@ -21,6 +22,14 @@ class ColorExtension extends AbstractExtension
             new TwigFilter('darken', [$this, 'darken']),
             new TwigFilter('lighten', [$this, 'lighten']),
             new TwigFilter('alpha', [$this, 'alpha']),
+        ];
+    }
+
+    public function getTests(): array
+    {
+        return [
+            new TwigTest('dark', [$this, 'isDark']),
+            new TwigTest('light', [$this, 'isLight']),
         ];
     }
 
@@ -63,6 +72,19 @@ class ColorExtension extends AbstractExtension
         return CssGenerator::rgba($color, $newAlpha);
     }
 
+    public function isDark(string $colorAsString): bool
+    {
+        /** @var Color $color */
+        $color = $this->parseColor($colorAsString)[0];
+
+        return $color->isDark();
+    }
+
+
+    public function isLight(string $colorAsString): bool
+    {
+        return !$this->isDark($colorAsString);
+    }
 
     /**
      * @return array [Color $color, mixed $alpha]
@@ -70,7 +92,7 @@ class ColorExtension extends AbstractExtension
      */
     private function parseColor(string $colorAsString): array
     {
-        $colorAsString = mb_strtolower($colorAsString);
+        $colorAsString = trim(mb_strtolower($colorAsString));
 
         // parse hexa
         if (mb_strpos($colorAsString, '#') === 0) {
