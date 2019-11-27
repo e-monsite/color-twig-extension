@@ -11,6 +11,7 @@ Then add the bundle to yours bundles if you are on Symfony:
 // config/bundles.php
 return [
     Emonsite\ColorTwigExtension\ColorExtensionBundle::class => ['all' => true],
+];
 ```
 
 ## Usage
