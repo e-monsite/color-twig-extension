@@ -44,5 +44,6 @@ class ColorExtensionTest extends TestCase
     {
         static::assertSame(true, static::$extension->isDark('black'));
         static::assertSame(true, static::$extension->isLight('white'));
+        static::assertSame(true, static::$extension->isDark('rgba(140, 140, 140, 1)'));
     }
 }

@@ -77,9 +77,8 @@ class ColorExtension extends AbstractExtension
         /** @var Color $color */
         $color = $this->parseColor($colorAsString)[0];
 
-        return $color->isDark();
+        return $color->getLuminosity() < 0.5;
     }
-
 
     public function isLight(string $colorAsString): bool
     {
