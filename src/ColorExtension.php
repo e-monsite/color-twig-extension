@@ -35,26 +35,12 @@ class ColorExtension extends AbstractExtension
 
     public function darken(string $colorAsString, int $percent): string
     {
-        try {
-            /** @var Color $color */
-            [$color, $alpha] = $this->parseColor($colorAsString);
-        } catch (InvalidColorException $e) {
-            return (string) $colorAsString;
-        }
-
-        return CssGenerator::rgba($color->darken($percent), $alpha);
+        return $this->shade($colorAsString, -round($percent / 100, 2),);
     }
 
     public function lighten(string $colorAsString, int $percent): string
     {
-        try {
-            /** @var Color $color */
-            [$color, $alpha] = $this->parseColor($colorAsString);
-        } catch (InvalidColorException $e) {
-            return (string) $colorAsString;
-        }
-
-        return CssGenerator::rgba($color->lighten($percent), $alpha);
+        return $this->shade($colorAsString, round($percent / 100, 2),);
     }
 
     /**
@@ -83,6 +69,21 @@ class ColorExtension extends AbstractExtension
     public function isLight(string $colorAsString): bool
     {
         return !$this->isDark($colorAsString);
+    }
+
+    /**
+     * Shade a color to white or black.
+     * @param float $ratio -1 to 1
+     */
+    private function shade(string $color, float $ratio): string
+    {
+        $newColor = \SBC::Shade($ratio, $color);
+
+        if ($newColor === null) {
+            throw new InvalidColorException("$color is not a color");
+        }
+
+        return $newColor;
     }
 
     /**

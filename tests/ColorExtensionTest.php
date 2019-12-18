@@ -28,10 +28,16 @@ class ColorExtensionTest extends TestCase
     public function darkenColorProvider()
     {
         return [
-            ['rgb(138, 7, 7)', 20, 'rgba(110, 5, 5, 1)'],
-            ['rgba(138, 7, 7, 0.8)', 20, 'rgba(110, 5, 5, 0.8)'],
-            ['#8a0707', 20, 'rgba(110, 5, 5, 1)'],
+            ['rgb(138, 7, 7)', 20, 'rgb(110,6,6)'],
+            ['rgba(138, 7, 7, 0.8)', 20, 'rgba(110,6,6,0.8)'],
+            ['#8a0707', 20, '#6e0606'],
         ];
+    }
+
+    public function testExtremism()
+    {
+        static::assertSame('#000000', static::$extension->darken('#666666', 100));
+        static::assertSame('#ffffff', static::$extension->lighten('#666666', 100));
     }
 
     public function testAlpha()

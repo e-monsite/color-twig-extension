@@ -11,7 +11,8 @@
     "require": {
         "php": "^7.3",
         "mikealmond/color": "^0.1.3",
-        "twig/twig": "^2.12"
+        "twig/twig": "^2.12",
+        "marcovo/shade-blend-convert": "^1.0"
     },
     "license": "MIT",
     "autoload": {
