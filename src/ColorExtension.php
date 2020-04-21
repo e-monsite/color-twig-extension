@@ -45,17 +45,18 @@ class ColorExtension extends AbstractExtension
 
     /**
      * Set the alpha (transparence) of a color
+     * result alpha will be relative to source color alpha
      */
     public function alpha(string $colorAsString, float $newAlpha): string
     {
         try {
             /** @var Color $color */
-            [$color,] = $this->parseColor($colorAsString);
+            [$color, $alpha] = $this->parseColor($colorAsString);
         } catch (InvalidColorException $e) {
             return $colorAsString;
         }
 
-        return CssGenerator::rgba($color, $newAlpha);
+        return CssGenerator::rgba($color, round($alpha*$newAlpha, 2));
     }
 
     public function isDark(string $colorAsString): bool
