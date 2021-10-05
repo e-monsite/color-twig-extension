@@ -9,7 +9,7 @@
         "twig"
     ],
     "require": {
-        "php": "^7.3",
+        "php": "^7.3|^8.0",
         "mikealmond/color": "^0.1.3",
         "twig/twig": "^2.12|^3.0",
         "marcovo/shade-blend-convert": "^1.0"
